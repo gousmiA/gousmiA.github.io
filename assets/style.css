@@ -1,12 +1,8 @@
-/* ===========================
-   MODERN FREEPIK LANDING PAGE STYLE
-   Palette from your image:
-   - #2C3639 (dark green/black)
-   - #3F4E4F (blue-grey dark)
-   - #A27B5C (brown-beige)
-   - #DCD7C9 (light beige)
-   =========================== */
+/* =========================================
+   PREMIUM FREEPIK-INSPIRED PORTFOLIO DESIGN
+   ========================================= */
 
+/* Palette from your image */
 :root {
   --c1: #2C3639;
   --c2: #3F4E4F;
@@ -14,12 +10,15 @@
   --c4: #DCD7C9;
 
   --bg: var(--c4);
-  --text: #222222;
+  --card: #ffffff;
   --title: #2C3639;
+  --text: #2b2b2b;
+  --muted: #555;
   --accent: #A27B5C;
-  --nav-text: #1a1a1a;
+  --shadow: rgba(0,0,0,0.18);
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -27,36 +26,36 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  line-height: 1.7;
 }
 
-/* --------------------------------------
-   TOP NAV BAR
----------------------------------------- */
+/* NAV BAR ----------------------------- */
 .topbar {
-  width: 100%;
-  padding: 18px 40px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   position: absolute;
   top: 0;
-  z-index: 20;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: flex-end;
+  background: transparent;
+  z-index: 10;
 }
 
 .nav a {
-  margin-left: 32px;
+  margin-left: 30px;
+  font-size: 1.15rem;
+  color: var(--c1);
   text-decoration: none;
-  color: var(--nav-text);
   font-weight: 500;
-  font-size: 1.05rem;
+  transition: all 0.2s ease;
 }
 
 .nav a:hover {
   color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .nav a.active {
@@ -64,71 +63,99 @@ body {
   font-weight: 600;
 }
 
-/* --------------------------------------
-   BACKGROUND STRIPES (Freepik style)
----------------------------------------- */
+/* BACKGROUND STRIPES ------------------ */
 .bg-stripes {
   position: absolute;
   top: 0;
   left: 0;
+  height: 420px;
   width: 100%;
-  height: 380px;
   display: flex;
   z-index: -1;
 }
 
-.bg-stripes div {
-  flex: 1;
+.bg1 { background: var(--c4); flex: 1; }
+.bg2 { background: var(--c3); flex: 1; }
+.bg3 { background: var(--c2); flex: 1; }
+.bg4 { background: var(--c1); flex: 1; }
+
+/* CARD CONTAINER ---------------------- */
+.main-card,
+.page-card {
+  max-width: 950px;
+  margin: 180px auto 80px;
+  background: var(--card);
+  padding: 60px 70px;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px var(--shadow);
+  animation: fadeIn 0.8s ease forwards;
 }
 
-.bg1 { background: var(--c4); }
-.bg2 { background: var(--c3); }
-.bg3 { background: var(--c2); }
-.bg4 { background: var(--c1); }
-
-/* --------------------------------------
-   MAIN CARD
----------------------------------------- */
-.main-card {
-  background: white;
-  max-width: 900px;
-  margin: 160px auto 60px;
-  padding: 50px;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* TITLES ------------------------------ */
+h1.page-title,
 h1 {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   color: var(--title);
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--c1);
+  margin-top: 40px;
+  margin-bottom: 10px;
   font-weight: 600;
-  margin-bottom: 12px;
 }
 
-.subtitle {
-  font-size: 1.4rem;
-  color: var(--accent);
-  margin-bottom: 18px;
+h3 {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  font-weight: 500;
+  color: var(--c2);
 }
 
+/* PARAGRAPHS & LISTS ------------------ */
 p {
-  margin-bottom: 15px;
-  line-height: 1.6;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
 }
 
+ul {
+  margin: 15px 0 15px 25px;
+  font-size: 1.05rem;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* PHOTO BOX --------------------------- */
 .photo-box {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 330px;
   border-radius: 14px;
+  overflow: hidden;
   background: var(--c2);
   float: right;
-  margin-left: 30px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  overflow: hidden;
+  margin-left: 40px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px var(--shadow);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   color: #eee;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.photo-box:hover {
+  transform: scale(1.03);
 }
 
 .photo-box img {
@@ -137,25 +164,22 @@ p {
   object-fit: cover;
 }
 
-/* --------------------------------------
-   GENERIC PAGE CARD
----------------------------------------- */
-.page-card {
-  background: white;
-  max-width: 900px;
-  margin: 140px auto 60px;
-  padding: 40px 50px;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
-}
+/* MOBILE ------------------------------- */
+@media (max-width: 900px) {
+  .main-card,
+  .page-card {
+    padding: 35px 30px;
+  }
 
-.page-title {
-  font-size: 2.4rem;
-  color: var(--title);
-  margin-bottom: 20px;
-}
+  .photo-box {
+    float: none;
+    margin: 0 auto 20px;
+    width: 250px;
+    height: 260px;
+  }
 
-.page-card p,
-.page-card li {
-  font-size: 1.05rem;
+  h1.page-title,
+  h1 {
+    font-size: 2.2rem;
+  }
 }
