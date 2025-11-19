@@ -1,1 +1,229 @@
 
+/* =========================================
+   PREMIUM FREEPIK-INSPIRED PORTFOLIO DESIGN
+   ========================================= */
+
+/* Palette from your image */
+:root {
+  --c1: #2C3639;
+  --c2: #3F4E4F;
+  --c3: #A27B5C;
+  --c4: #DCD7C9;
+
+  --bg: var(--c4);
+  --card: #ffffff;
+  --title: #2C3639;
+  --text: #2b2b2b;
+  --muted: #555;
+  --accent: #A27B5C;
+  --shadow: rgba(0,0,0,0.18);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* NAV BAR ----------------------------- */
+.topbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: flex-end;
+  background: transparent;
+  z-index: 10;
+}
+
+.nav a {
+  margin-left: 30px;
+  font-size: 1.15rem;
+  color: var(--c1);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* BACKGROUND STRIPES ------------------ */
+.bg-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 420px;
+  width: 100%;
+  display: flex;
+  z-index: -1;
+}
+
+.bg1 { background: var(--c4); flex: 1; }
+.bg2 { background: var(--c3); flex: 1; }
+.bg3 { background: var(--c2); flex: 1; }
+.bg4 { background: var(--c1); flex: 1; }
+
+/* CARD CONTAINER ---------------------- */
+.main-card,
+.page-card {
+  max-width: 950px;
+  margin: 180px auto 80px;
+  background: var(--card);
+  padding: 60px 70px;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px var(--shadow);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* TITLES ------------------------------ */
+h1.page-title,
+h1 {
+  font-size: 2.8rem;
+  color: var(--title);
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--c1);
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  font-weight: 500;
+  color: var(--c2);
+}
+
+/* PARAGRAPHS & LISTS ------------------ */
+p {
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+ul {
+  margin: 15px 0 15px 25px;
+  font-size: 1.05rem;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* PHOTO BOX --------------------------- */
+.photo-box {
+  width: 320px;
+  height: 330px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--c2);
+  float: right;
+  margin-left: 40px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.photo-box:hover {
+  transform: scale(1.03);
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MOBILE ------------------------------- */
+@media (max-width: 900px) {
+  .main-card,
+  .page-card {
+    padding: 35px 30px;
+  }
+
+  .photo-box {
+    float: none;
+    margin: 0 auto 20px;
+    width: 250px;
+    height: 260px;
+  }
+
+  h1.page-title,
+  h1 {
+    font-size: 2.2rem;
+  }
+}
+
+
+
+/* ===== Bouton CV ===== */
+
+.download-cv {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--c1);
+  color: #fdfdfd;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--c2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+}
+
+/* ===== Icône lien PDF / DOI ===== */
+.pdf-icon {
+  font-size: 1.3rem;
+  margin-right: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transform: translateY(2px);
+  transition: 0.2s ease;
+}
+
+.pdf-icon:hover {
+  transform: translateY(2px) scale(1.2);
+  opacity: 0.8;
+}
