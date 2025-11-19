@@ -1,3 +1,164 @@
+/* ===========================
+   MODERN FREEPIK LANDING PAGE STYLE
+   Palette from your image:
+   - #2C3639 (dark green/black)
+   - #3F4E4F (blue-grey dark)
+   - #A27B5C (brown-beige)
+   - #DCD7C9 (light beige)
+   =========================== */
+
+:root {
+  --c1: #2C3639;
+  --c2: #3F4E4F;
+  --c3: #A27B5C;
+  --c4: #DCD7C9;
+
+  --bg: var(--c4);
+  --text: #222222;
+  --title: #2C3639;
+  --accent: #A27B5C;
+  --nav-text: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* --------------------------------------
+   TOP NAV BAR
+---------------------------------------- */
+.topbar {
+  width: 100%;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 20;
+}
+
+.nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.nav a:hover {
+  color: var(--accent);
+}
+
+.nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* --------------------------------------
+   BACKGROUND STRIPES (Freepik style)
+---------------------------------------- */
+.bg-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 380px;
+  display: flex;
+  z-index: -1;
+}
+
+.bg-stripes div {
+  flex: 1;
+}
+
+.bg1 { background: var(--c4); }
+.bg2 { background: var(--c3); }
+.bg3 { background: var(--c2); }
+.bg4 { background: var(--c1); }
+
+/* --------------------------------------
+   MAIN CARD
+---------------------------------------- */
+.main-card {
+  background: white;
+  max-width: 900px;
+  margin: 160px auto 60px;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+h1 {
+  font-size: 3.2rem;
+  color: var(--title);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.photo-box {
+  width: 300px;
+  height: 300px;
+  border-radius: 14px;
+  background: var(--c2);
+  float: right;
+  margin-left: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #eee;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --------------------------------------
+   GENERIC PAGE CARD
+---------------------------------------- */
+.page-card {
+  background: white;
+  max-width: 900px;
+  margin: 140px auto 60px;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+.page-title {
+  font-size: 2.4rem;
+  color: var(--title);
+  margin-bottom: 20px;
+}
+
+.page-card p,
+.page-card li {
+  font-size: 1.05rem;
+}
 :root {
   /* MAIN PALETTE BASED ON YOUR IMAGE */
   --bg: #FFFEDF;          /* soft beige background */
