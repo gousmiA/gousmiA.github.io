@@ -32,30 +32,47 @@ body {
   line-height: 1.7;
 }
 
-/* NAV BAR ----------------------------- */
+/* NAVBAR transparente au début */
 .topbar {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 50px;
-  background: #ffffff;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 18px 50px;
   display: flex;
   justify-content: flex-end;
-  z-index: 50;
+
+  background: rgba(255, 255, 255, 0.20); /* Très transparent */
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 100;
 }
 
 .nav a {
-  margin-left: 32px;
+  margin-left: 30px;
   font-size: 1.15rem;
-  color: var(--c1);
   font-weight: 600;
   text-decoration: none;
+  color: var(--c1);
+  transition: 0.2s ease;
 }
 
 .nav a:hover {
   color: var(--accent);
 }
+
+.nav a.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* 🔥 Quand on scroll → la navbar change */
+.topbar.scrolled {
+  background: rgba(255, 255, 255, 0.95); /* tu veux plus foncé ? on change */
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
 
 /* BACKGROUND STRIPES ------------------ */
 .bg-stripes {
