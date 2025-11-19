@@ -37,30 +37,24 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 18px 50px;
+  padding: 20px 50px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   display: flex;
   justify-content: flex-end;
-  background: var(--c1);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
   z-index: 50;
 }
 
 .nav a {
-  margin-left: 30px;
+  margin-left: 32px;
   font-size: 1.15rem;
-  color: #ffffff;
+  color: var(--c1);
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 500;
-  transition: 0.2s ease;
 }
 
 .nav a:hover {
-  color: var(--c3);
-}
-
-.nav a.active {
-  color: var(--c3);
-  font-weight: 700;
+  color: var(--accent);
 }
 
 /* BACKGROUND STRIPES ------------------ */
