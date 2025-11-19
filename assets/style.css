@@ -1,11 +1,13 @@
 :root {
-  --bg: #f3eeee;        /* light beige/grey */
-  --card: #f7f2f2;
-  --accent: #7b2456;    /* burgundy like the example */
-  --accent-soft: #b95b88;
-  --text: #2b2626;
-  --muted: #6b5b5b;
-  --border: #e0d6d6;
+  /* MAIN PALETTE BASED ON YOUR IMAGE */
+  --bg: #FFFEDF;          /* soft beige background */
+  --card: #ffffff;        /* white content blocks */
+  --accent: #34606D;      /* deep blue-green */
+  --accent-light: #0CFFC1;/* cyan highlight */
+  --accent-soft: #C0FFC1; /* pale green */
+  --text: #2c3031;        /* dark gray */
+  --muted: #556063;       /* muted grey */
+  --border: #dcdccd;      /* light soft border */
 }
 
 * {
@@ -21,26 +23,17 @@ body {
   color: var(--text);
 }
 
-a {
-  color: var(--accent-soft);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Top bar */
+/* ---------------- NAVIGATION BAR ---------------- */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #fff;
+  background: white;
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 24px;
+  padding: 10px 24px;
 }
 
 .topbar-inner {
@@ -52,21 +45,22 @@ a:hover {
 }
 
 .brand {
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: var(--accent);
 }
 
 .nav {
   display: flex;
-  gap: 24px;
-  font-size: 0.95rem;
+  gap: 26px;
+  font-size: 1rem;
 }
 
 .nav a {
   color: var(--text);
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
 }
 
 .nav a:hover {
@@ -85,25 +79,26 @@ a:hover {
   bottom: -4px;
   height: 2px;
   width: 100%;
-  background: var(--accent);
+  background: var(--accent-light);
+  border-radius: 1px;
 }
 
 .top-right {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--muted);
 }
 
-/* Layout */
+/* ---------------- LAYOUT ---------------- */
 .page-wrapper {
   max-width: 1150px;
   margin: 40px auto 60px;
   padding: 0 24px;
 }
 
-/* Hero section (home only) */
+/* ---------------- HERO SECTION ---------------- */
 .hero {
   display: flex;
-  gap: 40px;
+  gap: 50px;
   align-items: center;
   margin-bottom: 40px;
 }
@@ -113,22 +108,22 @@ a:hover {
 }
 
 .hero-name {
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: 3.2rem;
+  font-weight: 600;
   color: var(--accent);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .hero-line {
   font-size: 1.2rem;
-  color: var(--accent);
-  margin-bottom: 4px;
+  color: var(--accent-soft);
+  margin-bottom: 6px;
 }
 
 .hero-sub {
   font-size: 1rem;
   color: var(--muted);
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .hero-photo {
@@ -140,57 +135,55 @@ a:hover {
 .hero-photo-inner {
   width: 280px;
   height: 320px;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0,0,0,0.18);
-  background: #ddd;
+  background: var(--accent-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #555;
-  font-size: 0.9rem;
+  color: var(--accent);
+  font-size: 1rem;
 }
 
 .hero-photo-inner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* Card blocks */
+/* ---------------- CARD BLOCKS ---------------- */
 .card {
   background: var(--card);
-  border-radius: 6px;
+  border-radius: 10px;
   border: 1px solid var(--border);
-  padding: 24px 26px 32px;
+  padding: 28px 30px 34px;
   line-height: 1.7;
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   color: var(--text);
 }
 
 .card p + p {
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 .card strong {
   color: var(--accent);
-  font-weight: 600;
 }
 
-/* Page title inside card */
+/* Page title */
 .page-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-/* Two-column contact section */
+/* Address / Contact columns */
 .columns {
   display: flex;
   gap: 80px;
-  margin-top: 30px;
-  font-size: 0.95rem;
+  margin-top: 40px;
+  font-size: 1rem;
 }
 
 .column-title {
@@ -199,29 +192,29 @@ a:hover {
   margin-bottom: 6px;
 }
 
-/* Logos row */
+/* Logos */
 .logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 30px;
+  gap: 30px;
+  margin-top: 40px;
   align-items: center;
 }
 
 .logo-placeholder {
   width: 140px;
   height: 60px;
-  border-radius: 4px;
-  border: 1px dashed var(--border);
+  border-radius: 5px;
+  border: 1px dashed var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  color: var(--muted);
-  background: #faf6f6;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
-/* Responsive */
+/* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column-reverse;
@@ -231,30 +224,22 @@ a:hover {
     width: 100%;
     justify-content: center;
   }
-  .hero-photo-inner {
-    width: 220px;
-    height: 260px;
+  .columns {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
 @media (max-width: 700px) {
   .topbar-inner {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
   .nav {
-    gap: 16px;
     flex-wrap: wrap;
     justify-content: center;
   }
-  .page-wrapper {
-    margin-top: 24px;
-  }
   .hero-name {
     font-size: 2.4rem;
-  }
-  .columns {
-    flex-direction: column;
-    gap: 20px;
   }
 }
