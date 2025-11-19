@@ -69,10 +69,16 @@ body {
 
 /* 🔥 Quand on scroll → la navbar change */
 .topbar.scrolled {
-  background: rgba(255, 255, 255, 0.95); /* tu veux plus foncé ? on change */
+  background: var(--c1);  /* bleu foncé */ /* background: rgba(255, 255, 255, 0.95); /* tu veux plus foncé ? on change */
   box-shadow: 0 4px 18px rgba(0,0,0,0.12);
 }
+.topbar.scrolled .nav a {
+  color: white;
+}
 
+.topbar.scrolled .nav a.active {
+  color: var(--c3);
+}
 
 /* BACKGROUND STRIPES ------------------ */
 .bg-stripes {
