@@ -1,0 +1,21 @@
+title: "Aimene Gouasmi"
+description: "Numerical analysis, finite elements, interface problems"
+theme: minima
+markdown: kramdown
+
+# Navigation (we can change later)
+nav:
+  - name: Home
+    link: /
+  - name: CV
+    link: /cv
+  - name: Teaching
+    link: /teaching
+  - name: Talks
+    link: /talks
+  - name: Publications
+    link: /publications
+
+# Load CSS
+include:
+  - assets/style.css
