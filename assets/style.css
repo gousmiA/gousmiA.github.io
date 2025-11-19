@@ -254,24 +254,25 @@ ul li {
 /* ICONES À GAUCHE */
 .left-icons {
   display: flex;
-  gap: 18px;
   align-items: center;
+  gap: 18px;
 }
 
-.left-icons .icon {
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: var(--c1);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+.left-icons img {
+  width: 26px;
+  height: 26px;
+  opacity: 0.85;
+  transition: 0.25s ease;
 }
 
-.left-icons .icon:hover {
-  transform: scale(1.25);
-  opacity: 0.7;
+.left-icons img:hover {
+  opacity: 1;
+  transform: scale(1.15);
 }
 
-/* Adaptation quand navbar change au scroll */
-.topbar.scrolled .left-icons .icon {
-  color: var(--c1); /* ou blanc si tu veux: #fff */
+/* Quand la navbar scrolle */
+.topbar.scrolled .left-icons img {
+  opacity: 1;
 }
+
 
