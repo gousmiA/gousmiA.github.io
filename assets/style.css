@@ -74,6 +74,7 @@ body {
 .bg4 { background: var(--c1); flex: 1; }
 
 /* CARD CONTAINER ---------------------- */
+
 .main-card,
 .page-card {
   max-width: 950px;
@@ -83,6 +84,10 @@ body {
   border-radius: 16px;
   box-shadow: 0 16px 40px var(--shadow);
   animation: fadeIn 0.8s ease forwards;
+}
+main.page-card,
+.main-card {
+  margin-top: 180px; /* ou 200 si nécessaire */
 }
 
 @keyframes fadeIn {
