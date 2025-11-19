@@ -40,27 +40,26 @@ body {
   padding: 18px 50px;
   display: flex;
   justify-content: flex-end;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  background: var(--c1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
   z-index: 50;
 }
 
 .nav a {
   margin-left: 30px;
   font-size: 1.15rem;
-  color: var(--c1);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: 0.2s ease;
 }
 
 .nav a:hover {
-  color: var(--accent);
+  color: var(--c3);
 }
 
 .nav a.active {
-  color: var(--accent);
+  color: var(--c3);
   font-weight: 700;
 }
 
