@@ -39,16 +39,18 @@ body {
   top: 0;
   width: 100%;
   padding: 18px 50px;
+
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between; /* <-- la clé */
+  align-items: center;
 
-  background: rgba(255, 255, 255, 0.20); /* Très transparent */
+  background: rgba(255, 255, 255, 0.20);
   backdrop-filter: blur(18px);
-
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: background 0.3s ease, box-shadow 0.3s ease;
   z-index: 100;
 }
+
 
 .nav a {
   margin-left: 30px;
@@ -251,12 +253,9 @@ ul li {
 }
 /* ICONES À GAUCHE */
 .left-icons {
-  position: absolute;
-  left: 30px;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   gap: 18px;
+  align-items: center;
 }
 
 .left-icons .icon {
