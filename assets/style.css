@@ -271,6 +271,8 @@ ul li {
 }
 
 /* Quand la navbar scrolle */
+
+/*
 .topbar.scrolled .left-icons img {
   opacity: 1;
 }
@@ -286,6 +288,7 @@ ul li {
 .topbar.scrolled .left-icons .icon img[alt="GitHub"] {
   content: url("assets/icons/Github_white.svg");
 }
+*/
 
 
 
