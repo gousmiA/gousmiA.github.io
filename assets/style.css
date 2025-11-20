@@ -443,5 +443,107 @@ ul li {
   opacity: 0.9;
 }
 
+/* =========================
+   VERSION MOBILE / TABLETTE
+   ========================= */
+@media (max-width: 900px) {
+
+  body {
+    font-size: 0.95rem;
+  }
+
+  /* TOPBAR : on réduit les marges pour gagner de la place */
+  .topbar {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  /* icônes à gauche un peu moins espacées */
+  .left-icons {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .left-icons img {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* nav au centre, sur 100% de largeur, qui peut aller à la ligne */
+  .nav {
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 16px;
+    text-align: center;
+  }
+
+  .nav a {
+    margin-left: 0;
+    font-size: 0.95rem;
+  }
+
+  /* bouton recherche à droite mais plus proche */
+  .right-search {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    flex: 0 0 auto;
+  }
+
+  .search-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* le panneau de recherche prend presque toute la largeur */
+  .page-search-panel {
+    top: 60px;
+    right: 8px;
+    left: 8px;
+    max-width: none;
+  }
+
+  /* bandes de fond un peu moins hautes */
+  .bg-stripes {
+    height: 260px;
+  }
+
+  /* carte principale : moins de marge, plus petite largeur */
+  .main-card,
+  .page-card {
+    margin: 130px 12px 40px;
+    padding: 24px 18px;
+    max-width: 100%;
+  }
+
+  h1.page-title,
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.97rem;
+  }
+
+  .photo-box {
+    float: none;
+    margin: 0 auto 16px;
+    width: 220px;
+    height: 230px;
+  }
+
+  .affiliations img {
+    height: 30px;
+  }
+}
 
 
