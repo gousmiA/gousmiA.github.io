@@ -119,12 +119,26 @@
 
   <script>
   const topbar = document.querySelector('.topbar');
-
+  
+  const linkedinImg     = document.querySelector('.left-icons img[alt="LinkedIn"]');
+  const researchgateImg = document.querySelector('.left-icons img[alt="ResearchGate"]');
+  const githubImg       = document.querySelector('.left-icons img[alt="GitHub"]');
+    
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
       topbar.classList.add('scrolled');
     } else {
       topbar.classList.remove('scrolled');
+    }
+    // swap icons
+    if (scrolled) {
+      linkedinImg.src     = 'assets/icons/Linkedin_white.svg';
+      researchgateImg.src = 'assets/icons/Researchgate_white.svg';
+      githubImg.src       = 'assets/icons/Github_white.svg';
+    } else {
+      linkedinImg.src     = 'assets/icons/Linkedin.svg';
+      researchgateImg.src = 'assets/icons/Researchgate.svg';
+      githubImg.src       = 'assets/icons/Github.svg';
     }
   });
 </script>
