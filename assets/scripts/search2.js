@@ -1,4 +1,4 @@
-// ====== CONFIG: pages of your personal site ======
+// =================== CONFIG ===================
 const PAGES = [
   { file: "index.html",       label: "Home" },
   { file: "cv.html",          label: "CV" },
@@ -7,27 +7,78 @@ const PAGES = [
   { file: "teaching.html",    label: "Enseignements" }
 ];
 
-function getCurrentPage() {
-  const path = window.location.pathname;
-  const last = path.split("/").pop();
-  return last === "" ? "index.html" : last;
+// Normalize text: remove accents + unify quotes
+function normalize(str) {
+  return str
+    .normalize("NFD")                   // split accents
+    .replace(/[\u0300-\u036f]/g, "")    // remove accents
+    .replace(/’/g, "'")                 // typographic apostrophe → '
+    .toLowerCase();
 }
 
-// ====== HIGHLIGHT IN CURRENT PAGE (used on load & after navigation) ======
-function highlightInCurrentPage(qLower) {
-  // more general: search inside ANY <main>, not only .page-card
+// Levenshtein distance (typo tolerance)
+function levenshtein(a, b) {
+  const m = [];
+  for (let i = 0; i <= b.length; i++) m[i] = [i];
+  for (let j = 0; j <= a.length; j++) m[0][j] = j;
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      m[i][j] = Math.min(
+        m[i - 1][j] + 1,
+        m[i][j - 1] + 1,
+        m[i - 1][j - 1] + (a[j - 1] === b[i - 1] ? 0 : 1)
+      );
+    }
+  }
+  return m[b.length][a.length];
+}
+
+function isMatch(normalText, normalQuery) {
+  if (normalText.includes(normalQuery)) return true;
+  if (levenshtein(normalText, normalQuery) <= 1) return true;
+  return false;
+}
+
+// ====== Exact highlight inside a paragraph ======
+function highlightPhrase(el, query) {
+  const text = el.innerHTML;
+  const qNorm = normalize(query);
+
+  // Find real positions (non-normalized)
+  let html = el.innerHTML;
+  let plain = normalize(el.innerText);
+
+  const idx = plain.indexOf(qNorm);
+  if (idx === -1) return;
+
+  // Extract original substring
+  const original = el.innerText.substring(idx, idx + query.length);
+
+  // Replace only the exact part (HTML-safe)
+  const regex = new RegExp(original, "i");
+  el.innerHTML = el.innerHTML.replace(regex, `<span class="search-hit-word">$&</span>`);
+}
+
+function highlightInCurrentPage(query) {
+  const qNorm = normalize(query);
+
   const candidates = document.querySelectorAll(
     "main h1, main h2, main h3, main p, main li"
   );
-  if (!candidates.length) return false;
-
-  candidates.forEach(el => el.classList.remove("search-hit"));
 
   let firstHit = null;
+
+  candidates.forEach(el => {
+    el.querySelectorAll(".search-hit-word").forEach(e => e.remove());
+  });
+
   for (const el of candidates) {
-    const text = el.textContent.toLowerCase();
-    if (text.includes(qLower)) {
-      el.classList.add("search-hit");
+    const txtNorm = normalize(el.innerText);
+
+    if (isMatch(txtNorm, qNorm)) {
+      highlightPhrase(el, query);
+
       if (!firstHit) firstHit = el;
     }
   }
@@ -39,135 +90,125 @@ function highlightInCurrentPage(qLower) {
   return false;
 }
 
-// ====== BUILD SNIPPET FROM PLAIN TEXT ======
-function buildSnippet(text, idx, queryLength) {
+// =================== SNIPPET BUILDER ===================
+function buildSnippet(text, idx, qLen) {
   const radius = 60;
   const start = Math.max(0, idx - radius);
-  const end   = Math.min(text.length, idx + queryLength + radius);
+  const end = Math.min(text.length, idx + qLen + radius);
   let snippet = text.slice(start, end).replace(/\s+/g, " ").trim();
   if (start > 0) snippet = "… " + snippet;
   if (end < text.length) snippet = snippet + " …";
   return snippet;
 }
 
-// ====== SEARCH ACROSS ALL PAGES, RETURN ALL SUGGESTIONS ======
-async function searchEverywhere(queryOriginal) {
-  const qLower = queryOriginal.toLowerCase();
+// =================== CROSS-PAGE SEARCH ===================
+async function searchEverywhere(query) {
+  const qNorm = normalize(query);
   const resultsBox = document.querySelector("#search-results");
-  if (!resultsBox) return;
-
   const current = getCurrentPage();
+
   resultsBox.innerHTML = "<div style='font-size:0.8rem;color:#777;'>Recherche…</div>";
 
-  const allResults = [];
+  const results = [];
 
   for (const page of PAGES) {
     try {
       let text;
 
       if (page.file === current) {
-        // use current document text (no extra fetch)
         text = document.body.innerText;
       } else {
         const res = await fetch(page.file);
         if (!res.ok) continue;
-        const html = await res.text();
-
-        // strip HTML tags to get plain text
-        text = html.replace(/<script[\s\S]*?<\/script>/gi, "")
-                   .replace(/<style[\s\S]*?<\/style>/gi, "")
-                   .replace(/<[^>]+>/g, " ");
+        text = res
+          .textSync
+          ? await res.text()
+          : (await res.text());
       }
 
-      const textLower = text.toLowerCase();
-      const idx = textLower.indexOf(qLower);
+      const plain = normalize(
+        text.replace(/<[^>]+>/g, " ")
+      );
+
+      const idx = plain.indexOf(qNorm);
       if (idx === -1) continue;
 
-      const snippet = buildSnippet(text, idx, queryOriginal.length);
-      allResults.push({ page, snippet });
+      const snippet = buildSnippet(text, idx, query.length);
+      results.push({ page, snippet });
 
     } catch (e) {
-      console.error("Search fetch error for", page.file, e);
+      console.error("Search fetch error:", page.file);
     }
   }
 
-  if (!allResults.length) {
-    resultsBox.innerHTML = "<div style='font-size:0.8rem;color:#777;'>Aucun résultat trouvé.</div>";
+  if (results.length === 0) {
+    resultsBox.innerHTML = `<div>Aucun résultat pour "${query}".</div>`;
     return;
   }
 
   resultsBox.innerHTML = "";
-  allResults.forEach(result => {
-    const div = document.createElement("div");
-    div.className = "search-result";
+  results.forEach(result => {
+    const box = document.createElement("div");
+    box.className = "search-result";
 
-    const title = document.createElement("div");
-    title.className = "search-result-title";
-    title.textContent = result.page.label + " (" + result.page.file + ")";
+    box.innerHTML = `
+      <div class="search-result-title">${result.page.label}</div>
+      <div class="search-result-snippet">${result.snippet}</div>
+    `;
 
-    const snippetEl = document.createElement("div");
-    snippetEl.className = "search-result-snippet";
-    snippetEl.textContent = result.snippet;
-
-    div.appendChild(title);
-    div.appendChild(snippetEl);
-
-    // when clicking a suggestion → go to page + keep query in hash
-    div.addEventListener("click", () => {
-      const target = result.page.file + "#search=" + encodeURIComponent(queryOriginal);
-      window.location.href = target;
+    box.addEventListener("click", () => {
+      window.location.href = result.page.file + "#search=" + encodeURIComponent(query);
     });
 
-    resultsBox.appendChild(div);
+    resultsBox.appendChild(box);
   });
 }
 
-// ====== INIT (runs on every page) ======
+function getCurrentPage() {
+  const p = window.location.pathname.split("/").pop();
+  return p === "" ? "index.html" : p;
+}
+
+// =================== MAIN INIT ===================
 document.addEventListener("DOMContentLoaded", () => {
-  // navbar scroll color
+  // Navbar scroll
   const topbar = document.querySelector(".topbar");
   window.addEventListener("scroll", () => {
-    if (!topbar) return;
     topbar.classList.toggle("scrolled", window.scrollY > 40);
   });
 
-  const searchBtn   = document.querySelector(".search-btn");
-  const searchPanel = document.querySelector("#page-search-panel");
-  const searchInput = document.querySelector("#page-search-input");
-  const resultsBox  = document.querySelector("#search-results");
+  // Search panel
+  const btn = document.querySelector(".search-btn");
+  const panel = document.querySelector("#page-search-panel");
+  const input = document.querySelector("#page-search-input");
+  const results = document.querySelector("#search-results");
 
-  if (searchBtn && searchPanel && searchInput && resultsBox) {
-    // open/close panel
-    searchBtn.addEventListener("click", () => {
-      searchPanel.classList.toggle("open");
-      if (searchPanel.classList.contains("open")) {
-        resultsBox.innerHTML = "";
-        searchInput.value = "";
-        searchInput.focus();
-      }
+  if (btn && panel && input && results) {
+    btn.addEventListener("click", () => {
+      panel.classList.toggle("open");
+      input.value = "";
+      results.innerHTML = "";
+      if (panel.classList.contains("open")) input.focus();
     });
 
-    // Enter = search every page + list all suggestions
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key !== "Enter") return;
-      const q = searchInput.value.trim();
-      if (!q) return;
-      searchEverywhere(q);
+    input.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        searchEverywhere(input.value.trim());
+      }
     });
   }
 
-  // On first load: if #search= is present, highlight here
+  // Highlight if arriving with #search
   const hash = window.location.hash;
   if (hash.startsWith("#search=")) {
-    const q = decodeURIComponent(hash.slice("#search=".length)).toLowerCase();
+    const q = decodeURIComponent(hash.slice(8));
     highlightInCurrentPage(q);
   }
 
-  // Also highlight whenever the hash changes (e.g. click result to same page)
   window.addEventListener("hashchange", () => {
-    const hashNow = window.location.hash;
-    if (hashNow.startsWith("#search=")) {
-      const q = decodeURIComponent(hashNow.slice("#search=".length)).toLowerCase();
+    const newHash = window.location.hash;
+    if (newHash.startsWith("#search=")) {
+      const q = decodeURIComponent(newHash.slice(8));
       highlightInCurrentPage(q);
     }
   });
