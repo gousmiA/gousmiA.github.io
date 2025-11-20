@@ -265,6 +265,12 @@ ul li {
   transition: 0.25s ease;
 }
 
+/* When navbar is scrolled → icons become white */
+
+.topbar.scrolled .left-icons img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
 .left-icons img:hover {
   opacity: 1;
   transform: scale(1.15);
