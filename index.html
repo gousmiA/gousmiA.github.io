@@ -27,13 +27,23 @@
     <img src="assets/icons/Github.svg" alt="GitHub">
   </a>
 </div>
+
+  <!-- bloc à droite : menu + recherche -->
+    <div class="nav-right">
   <nav class="nav">
     <a href="index.html" class="active">Home</a>
     <a href="cv.html">CV</a>
     <a href="publications.html">Publications</a>
     <a href="talks.html">Communications orales</a>
     <a href="teaching.html">Enseignements</a>
-  </nav>
+  </nav> 
+    <!-- bouton recherche -->
+    <button class="search-btn" aria-label="Rechercher dans la page">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L19 20.5 20.5 19 15.5 14zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
+      </svg>
+    </button>
+    </div>
 </header>
 
 
@@ -44,6 +54,14 @@
     <div class="bg3"></div>
     <div class="bg4"></div>
   </div>
+  <div id="page-search-panel" class="page-search-panel">
+  <input
+    id="page-search-input"
+    class="page-search-input"
+    type="search"
+    placeholder="Chercher dans la page…"
+  />
+</div>
 
   <!-- Main Hero Card -->
   <div class="main-card">
@@ -64,19 +82,70 @@
       My research focuses on error estimation, equilibrated fluxes, and interface
       problems in finite element methods.
     </p>
+          <h2>Contact</h2>
+      <p>
+        📧
+        <a href="mailto:ton.email@domaine.fr">
+          ton.email@domaine.fr
+        </a>
+      </p>
+
   </div>
 
   <script>
-    const topbar = document.querySelector('.topbar');
-  
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        topbar.classList.add('scrolled');
-      } else {
-        topbar.classList.remove('scrolled');
+  const topbar = document.querySelector('.topbar');
+
+  // changement de couleur de la barre au scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      topbar.classList.add('scrolled');
+    } else {
+      topbar.classList.remove('scrolled');
+    }
+  });
+
+  // recherche dans la page
+  const searchBtn    = document.querySelector('.search-btn');
+  const searchPanel  = document.querySelector('#page-search-panel');
+  const searchInput  = document.querySelector('#page-search-input');
+
+  if (searchBtn && searchPanel && searchInput) {
+    searchBtn.addEventListener('click', () => {
+      searchPanel.classList.toggle('open');
+      if (searchPanel.classList.contains('open')) {
+        searchInput.focus();
       }
     });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const q = searchInput.value.trim().toLowerCase();
+        if (!q) return;
+
+        // on cherche dans le contenu principal
+        const candidates = document.querySelectorAll(
+          'main.page-card h2, main.page-card h3, main.page-card p, main.page-card li'
+        );
+
+        let firstHit = null;
+        candidates.forEach(el => el.classList.remove('search-hit'));
+
+        for (const el of candidates) {
+          if (el.textContent.toLowerCase().includes(q)) {
+            firstHit = el;
+            break;
+          }
+        }
+
+        if (firstHit) {
+          firstHit.classList.add('search-hit');
+          firstHit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  }
 </script>
+
 
 </body>
 </html>
