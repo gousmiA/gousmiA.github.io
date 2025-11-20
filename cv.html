@@ -125,12 +125,12 @@
   const githubImg       = document.querySelector('.left-icons img[alt="GitHub"]');
     
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+   /* if (window.scrollY > 40) {
       topbar.classList.add('scrolled');
     } else {
       topbar.classList.remove('scrolled');
     }
-
+    */
     const scrolled = window.scrollY > 40;   // <-- THIS WAS MISSING
 
     // toggle class
