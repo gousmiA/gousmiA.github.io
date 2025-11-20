@@ -111,7 +111,7 @@ body {
 
 .main-card,
 .page-card {
-  max-width: 950px;
+  max-width: 1050px;
   margin: 180px auto 80px;
   background: var(--card);
   padding: 60px 70px;
