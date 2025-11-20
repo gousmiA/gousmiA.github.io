@@ -106,59 +106,8 @@
 
     
   </main>
- <script>
-  const topbar = document.querySelector('.topbar');
+<script src="assets/scripts/script.js?v=1"></script>
 
-  // changement de couleur de la barre au scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      topbar.classList.add('scrolled');
-    } else {
-      topbar.classList.remove('scrolled');
-    }
-  });
-
-  // recherche dans la page
-  const searchBtn    = document.querySelector('.search-btn');
-  const searchPanel  = document.querySelector('#page-search-panel');
-  const searchInput  = document.querySelector('#page-search-input');
-
-  if (searchBtn && searchPanel && searchInput) {
-    searchBtn.addEventListener('click', () => {
-      searchPanel.classList.toggle('open');
-      if (searchPanel.classList.contains('open')) {
-        searchInput.focus();
-      }
-    });
-
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const q = searchInput.value.trim().toLowerCase();
-        if (!q) return;
-
-        // on cherche dans le contenu principal
-        const candidates = document.querySelectorAll(
-          'main.page-card h2, main.page-card h3, main.page-card p, main.page-card li'
-        );
-
-        let firstHit = null;
-        candidates.forEach(el => el.classList.remove('search-hit'));
-
-        for (const el of candidates) {
-          if (el.textContent.toLowerCase().includes(q)) {
-            firstHit = el;
-            break;
-          }
-        }
-
-        if (firstHit) {
-          firstHit.classList.add('search-hit');
-          firstHit.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-    });
-  }
-</script>
 
 </body>
 </html>
