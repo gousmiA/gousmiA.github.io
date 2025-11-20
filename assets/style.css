@@ -41,7 +41,7 @@ body {
   padding: 18px 50px;
 
   display: flex;
-  justify-content: space-between; /* <-- la clé */
+  /*justify-content: space-between; /* <-- la clé */*/
   align-items: center;
 
   background: rgba(255, 255, 255, 0.20);
@@ -52,7 +52,14 @@ body {
 }
 
 
+/* Center nav: inline links */
+.nav {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
 .nav a {
+  display: inline-block;
   margin-left: 30px;
   font-size: 1.15rem;
   font-weight: 600;
@@ -252,10 +259,20 @@ ul li {
   opacity: 0.8;
 }
 /* ICONES À GAUCHE */
-.left-icons {
+.left-icons,
+.right-search {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 18px;
+}
+
+.left-icons {
+  justify-content: flex-start;
+}
+
+.right-search {
+  justify-content: flex-end;
 }
 
 .left-icons img {
@@ -319,8 +336,8 @@ ul li {
 }
 
 .search-btn svg {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
 }
 
 .search-btn svg path {
