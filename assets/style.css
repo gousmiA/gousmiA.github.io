@@ -44,7 +44,7 @@ body {
   /*justify-content: space-between; /* <-- la clé */*/
   align-items: center;
 
-  background: rgba(255, 255, 255, 0.20);
+  background: var(--c1);/*rgba(255, 255, 255, 0.20);*/
   backdrop-filter: blur(22px);
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   transition: background 0.3s ease, box-shadow 0.3s ease;
