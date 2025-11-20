@@ -417,6 +417,8 @@ ul li {
 /* highlight in the page after navigation */
 .search-hit {
   background: rgba(162, 123, 92, 0.18);
+   padding: 2px 4px;
+   border-radius: 4px;
   transition: background 0.4s ease;
 }
 .affiliations {
