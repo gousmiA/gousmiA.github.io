@@ -15,8 +15,9 @@ function getCurrentPage() {
 
 // ====== HIGHLIGHT IN CURRENT PAGE (used on load & after navigation) ======
 function highlightInCurrentPage(qLower) {
+  // more general: search inside ANY <main>, not only .page-card
   const candidates = document.querySelectorAll(
-    "main.page-card h2, main.page-card h3, main.page-card p, main.page-card li"
+    "main h1, main h2, main h3, main p, main li"
   );
   if (!candidates.length) return false;
 
@@ -79,23 +80,17 @@ async function searchEverywhere(queryOriginal) {
       }
 
       const textLower = text.toLowerCase();
-      let idx = textLower.indexOf(qLower);
+      const idx = textLower.indexOf(qLower);
       if (idx === -1) continue;
 
-      // We only take the FIRST hit per page for the suggestions
       const snippet = buildSnippet(text, idx, queryOriginal.length);
-      allResults.push({
-        page,
-        snippet
-      });
+      allResults.push({ page, snippet });
 
     } catch (e) {
-      // ignore this page if fetch fails
       console.error("Search fetch error for", page.file, e);
     }
   }
 
-  // Display all suggestions
   if (!allResults.length) {
     resultsBox.innerHTML = "<div style='font-size:0.8rem;color:#777;'>Aucun résultat trouvé.</div>";
     return;
@@ -152,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // when pressing Enter → search everywhere & list ALL suggestions
+    // Enter = search every page + list all suggestions
     searchInput.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
       const q = searchInput.value.trim();
@@ -161,10 +156,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // When landing with #search=query in URL → highlight in this page
+  // On first load: if #search= is present, highlight here
   const hash = window.location.hash;
   if (hash.startsWith("#search=")) {
     const q = decodeURIComponent(hash.slice("#search=".length)).toLowerCase();
     highlightInCurrentPage(q);
   }
+
+  // Also highlight whenever the hash changes (e.g. click result to same page)
+  window.addEventListener("hashchange", () => {
+    const hashNow = window.location.hash;
+    if (hashNow.startsWith("#search=")) {
+      const q = decodeURIComponent(hashNow.slice("#search=".length)).toLowerCase();
+      highlightInCurrentPage(q);
+    }
+  });
 });
