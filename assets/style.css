@@ -282,7 +282,9 @@ ul li {
 .topbar.scrolled .left-icons img {
   opacity: 1;
 }
+*/
 /* When navbar is scrolled → use white versions */
+/*
 .topbar.scrolled .left-icons .icon img[alt="LinkedIn"] {
   content: url("assets/icons/Linkedin_white.svg");
 }
