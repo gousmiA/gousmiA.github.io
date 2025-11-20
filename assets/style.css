@@ -324,7 +324,7 @@ ul li {
 }
 
 .search-btn svg path {
-  fill: var(--c1);
+  fill: var(--c3);
   transition: 0.25s ease;
 }
 
