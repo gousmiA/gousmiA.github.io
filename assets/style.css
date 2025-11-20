@@ -368,6 +368,19 @@ ul li {
   background: rgba(162, 123, 92, 0.18);
   transition: background 0.4s ease;
 }
+.affiliations {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.affiliations img {
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(15%);
+  opacity: 0.9;
+}
 
 
 
