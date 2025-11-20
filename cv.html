@@ -130,6 +130,12 @@
     } else {
       topbar.classList.remove('scrolled');
     }
+
+    const scrolled = window.scrollY > 40;   // <-- THIS WAS MISSING
+
+    // toggle class
+    topbar.classList.toggle('scrolled', scrolled);
+    
     // swap icons
     if (scrolled) {
       linkedinImg.src     = 'assets/icons/Linkedin_white.svg';
