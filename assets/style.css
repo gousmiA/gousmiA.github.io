@@ -274,9 +274,18 @@ ul li {
 .topbar.scrolled .left-icons img {
   opacity: 1;
 }
-/* Quand la navbar est en mode "scrolled" → icônes blanches */
-.topbar.scrolled .left-icons svg path {
-  fill: #ffffff;
+/* When navbar is scrolled → use white versions */
+.topbar.scrolled .left-icons .icon img[alt="LinkedIn"] {
+  content: url("assets/icons/Linkedin_white.svg");
 }
+
+.topbar.scrolled .left-icons .icon img[alt="ResearchGate"] {
+  content: url("assets/icons/Researchgate_white.svg");
+}
+
+.topbar.scrolled .left-icons .icon img[alt="GitHub"] {
+  content: url("assets/icons/Github_white.svg");
+}
+
 
 
