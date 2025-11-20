@@ -274,5 +274,9 @@ ul li {
 .topbar.scrolled .left-icons img {
   opacity: 1;
 }
+/* Quand la navbar est en mode "scrolled" → icônes blanches */
+.topbar.scrolled .left-icons svg path {
+  fill: #ffffff;
+}
 
 
