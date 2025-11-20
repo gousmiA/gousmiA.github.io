@@ -421,6 +421,14 @@ ul li {
    border-radius: 4px;
   transition: background 0.4s ease;
 }
+/* highlight exact match */
+.search-hit-word {
+  background: yellow;
+  color: black;
+  padding: 2px 3px;
+  border-radius: 3px;
+}
+
 .affiliations {
   display: flex;
   align-items: center;
