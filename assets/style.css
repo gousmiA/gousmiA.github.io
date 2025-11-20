@@ -17,6 +17,7 @@
   --muted: #555;
   --accent: #A27B5C;
   --shadow: rgba(0,0,0,0.18);
+   --card2: rgba(255, 255, 255, 0.85);
 }
 
 /* RESET */
@@ -113,7 +114,7 @@ body {
 .page-card {
   max-width: 1050px;
   margin: 180px auto 80px;
-  background: var(--card);
+  background: var(--card2);
   padding: 60px 70px;
   border-radius: 16px;
   box-shadow: 0 16px 40px var(--shadow);
