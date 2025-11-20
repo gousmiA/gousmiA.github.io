@@ -298,5 +298,76 @@ ul li {
 }
 */
 
+/*
+========================================
+*/
+/* bloc menu + recherche à droite */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* bouton recherche */
+.search-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.search-btn svg path {
+  fill: var(--c1);
+  transition: 0.25s ease;
+}
+
+/* quand on survole l'icône */
+.search-btn:hover svg path {
+  fill: var(--accent);
+}
+
+/* quand la topbar est en mode scrolled, icône blanche */
+.topbar.scrolled .search-btn svg path {
+  fill: #ffffff;
+}
+
+/* panneau de recherche */
+.page-search-panel {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+  display: none;
+  align-items: center;
+  z-index: 120;
+}
+
+.page-search-panel.open {
+  display: flex;
+}
+
+.page-search-input {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+/* petit highlight de la première occurrence trouvée */
+.search-hit {
+  background: rgba(162, 123, 92, 0.18);
+  transition: background 0.4s ease;
+}
+
 
 
