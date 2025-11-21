@@ -1,0 +1,88 @@
+/* ======== BANNIÈRE REPORTAGE MODERNE ======== */
+
+.alumni-banner {
+  display: flex;
+  width: 100%;
+  height: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  margin: 30px 0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.alumni-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+}
+
+.banner-left {
+  flex: 1.1;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+      to right,
+      var(--c1) 0%,
+      var(--c1) 55%,
+      rgba(0,0,0,0) 100%
+  );
+}
+
+.banner-left h3 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.banner-left p {
+  margin: 0 0 14px;
+  max-width: 480px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.banner-link {
+  font-weight: 600;
+  opacity: 0.95;
+  font-size: 1.05rem;
+}
+
+.banner-right {
+  flex: 1;
+  position: relative;
+}
+
+.banner-right img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .alumni-banner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .banner-left {
+    padding: 24px;
+    background: linear-gradient(
+      to bottom,
+      var(--c1) 0%, 
+      var(--c1) 65%, 
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  .banner-right {
+    height: 180px;
+  }
+}
