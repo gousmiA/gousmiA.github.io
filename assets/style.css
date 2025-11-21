@@ -222,10 +222,14 @@ ul li {
 
 /* ===== Bouton CV ===== */
 
+/* Move the CV button to the right */
 .download-cv {
-  text-align: right;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;   /* aligns the button to the RIGHT */
   margin-bottom: 10px;
 }
+
 
 .btn {
   display: inline-block;
