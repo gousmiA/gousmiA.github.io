@@ -1,4 +1,4 @@
-<script>
+
 function showReportage() {
   const panel1 = document.getElementById("panel-reportage");
   const panel2 = document.getElementById("panel-these");
@@ -21,4 +21,3 @@ function showThese() {
   panel2.classList.add("enter-left");
   panel2.classList.add("active");
 }
-</script>
