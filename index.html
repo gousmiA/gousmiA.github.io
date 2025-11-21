@@ -95,9 +95,14 @@
       </p>
 
   </div>
-<!--<h2>Reportage UPPA Alumni</h2> -->
 
-<a class="alumni-banner" 
+  <div class="panel-container">
+
+  <!-- PANEL 1 : Reportage -->
+  <div id="panel-reportage" class="panel active">
+    <!-- Ton bloc reportage ici -->
+    <!-- (garde ton HTML actuel de la bannière) -->
+   <a class="alumni-banner" 
    href="https://alumni.univ-pau.fr/fr/article/aimene-gouasmi-attache-temporaire-d-enseignement-et-de-recherche-ater-a-l-uppa-alumni-edene-cohort-1/09/09/2025/376"
    target="_blank">
 
@@ -117,9 +122,12 @@
     </div>
 
 </a>
-<h2>Thèse de doctorat</h2>
+  </div>
 
-<a class="thesis-banner"
+  <!-- PANEL 2 : Thèse -->
+  <div id="panel-these" class="panel">
+    <!-- Ton bloc thèse ici -->
+   <a class="thesis-banner"
    href="these_aimene_gouasmi.pdf"
    target="_blank">
 
@@ -135,10 +143,19 @@
   </div>
 
 </a>
+  </div>
+
+</div>
+
+<!-- Boutons de transition -->
+<div class="panel-buttons">
+  <button onclick="showReportage()">Reportage</button>
+  <button onclick="showThese()">Thèse</button>
+</div>
 
 
   <script src="assets/scripts/search2.js?v=2"></script>
-
+  <script src="assets/scripts/transition.js?v=2"></script>
 
 </body>
 </html>
