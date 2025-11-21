@@ -639,6 +639,41 @@ ul li {
     display: none; /* sur mobile on garde le titre + bouton */
   }
 }
+/* ===== CONTACT BUTTON ===== */
+.contact-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 22px;
+  background: var(--c1);          /* dark green/blue like navbar */
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-btn:hover {
+  background: var(--c2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+@media (max-width: 900px) {
+  .contact-btn {
+    display: block;
+    text-align: center;
+    width: fit-content;
+  }
+}
 
 
 
