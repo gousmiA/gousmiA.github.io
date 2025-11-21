@@ -568,12 +568,20 @@ ul li {
 }
 
 /* image */
+.alumni-card-image {
+  position: absolute;
+  inset: 0;
+}
+
 .alumni-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;      /* remplissage propre */
+  object-position: center; /* centre le visage */
   display: block;
+  filter: brightness(0.75); /* rend l’image plus lisible sous le texte */
 }
+
 
 /* overlay dégradé */
 .alumni-card-overlay {
