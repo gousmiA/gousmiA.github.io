@@ -206,4 +206,47 @@
   background: var(--c2);
 }
 
+/* ===== SLIDER ENTRE REPORTAGE & THESE ===== */
+
+.feature-slider {
+  position: relative;
+  width: 100%;
+  min-height: 260px;      /* même hauteur que tes bannières */
+  margin: 25px 0 10px;
+  overflow: hidden;
+}
+
+/* chaque slide occupe la même zone, on les anime en transform */
+.feature-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(100%);   /* par défaut: hors écran à droite */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* slide visible */
+.feature-slide.is-current {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* slide qui sort par la droite */
+.feature-slide.leaving-right {
+  opacity: 0;
+  transform: translateX(120%);
+}
+
+/* slide qui entre par la gauche */
+.feature-slide.entering-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* pour mobile : s'assurer qu'on garde l'espace */
+@media (max-width: 900px) {
+  .feature-slider {
+    min-height: 220px;
+  }
+}
 
