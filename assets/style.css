@@ -546,4 +546,34 @@ ul li {
   }
 }
 
+.alumni-card {
+  border: 1px solid #ddd;
+  padding: 18px;
+  border-radius: 12px;
+  background: white;
+  transition: 0.3s ease;
+  margin-top: 25px;
+}
+
+.alumni-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.alumni-card a {
+  text-decoration: none;
+  color: var(--c1);
+}
+
+.alumni-card h3 {
+  margin-bottom: 8px;
+}
+
+.see-more {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+
 
