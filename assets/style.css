@@ -546,91 +546,92 @@ ul li {
   }
 }
 
-/* ===== Reportage UPPA Alumni ===== */
+/* ======== CARTE REPORTAGE MODERNE ======== */
 
-.alumni-feature {
-  margin-top: 24px;
-  padding: 20px 22px;
-  border-radius: 16px;
-  background: var(--card);
-  box-shadow: 0 10px 26px var(--shadow);
-  display: flex;
-  gap: 22px;
-  align-items: stretch;
+.alumni-card-modern {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+  margin: 25px 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.alumni-image {
-  flex: 0 0 190px;
-  border-radius: 14px;
-  background: var(--c2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #eee;
-  font-size: 0.9rem;
-  text-align: center;
-  padding: 8px;
+.alumni-card-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.28);
 }
 
-/* quand tu mettras ta vraie image */
-.alumni-image img {
+/* image */
+.alumni-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: inherit;
   display: block;
 }
 
-.alumni-text {
-  flex: 1;
+/* overlay dégradé */
+.alumni-card-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 30px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.6) 60%
+  );
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: flex-end;
 }
 
-.alumni-text h3 {
-  margin: 0 0 4px;
-  color: var(--c1);
+/* titre */
+.alumni-card-overlay h3 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
-.alumni-text p {
-  margin-bottom: 4px;
+/* texte */
+.alumni-card-overlay p {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 600px;
+  opacity: 0.9;
 }
 
-/* bouton vers le reportage */
-.alumni-btn {
-  align-self: flex-start;
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--c1);
-  color: #fdfdfd;
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-}
-
-.alumni-btn:hover {
-  background: var(--c2);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+/* petit lien “→” */
+.alumni-card-link {
+  font-weight: 600;
+  font-size: 1.05rem;
+  opacity: 0.95;
 }
 
 /* version mobile */
 @media (max-width: 900px) {
-  .alumni-feature {
-    flex-direction: column;
-    padding: 16px 16px;
+  .alumni-card-modern {
+    height: 200px;
   }
 
-  .alumni-image {
-    flex: 0 0 auto;
-    height: 180px;
+  .alumni-card-overlay {
+    padding: 18px;
+  }
+
+  .alumni-card-overlay h3 {
+    font-size: 1.2rem;
+  }
+
+  .alumni-card-overlay p {
+    display: none; /* sur mobile on garde le titre + bouton */
   }
 }
+
 
 
 
