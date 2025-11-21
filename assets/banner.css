@@ -247,6 +247,70 @@
 .feature-slider .thesis-banner {
   height: 260px;
 }
+/* ===== BIG OVERLAY ARROWS FOR SLIDER ===== */
+
+.feature-slider {
+  position: relative; /* important for absolute arrows */
+}
+
+/* base style for both arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 2.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+  z-index: 10;
+}
+
+/* left & right positions */
+.slider-arrow-left {
+  left: 14px;
+}
+
+.slider-arrow-right {
+  right: 14px;
+}
+
+/* hover effect on desktop: show arrows */
+.feature-slider:hover .slider-arrow {
+  opacity: 1;
+}
+
+/* click feedback */
+.slider-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* MOBILE: no hover → arrows always visible and big tap area */
+@media (max-width: 900px) {
+  .slider-arrow {
+    opacity: 0.95;
+    width: 56px;
+    height: 56px;
+    font-size: 2.4rem;
+  }
+
+  .feature-slider:hover .slider-arrow {
+    opacity: 0.95;
+  }
+}
 
 /* mobile: hauteur auto */
 @media (max-width: 900px) {
