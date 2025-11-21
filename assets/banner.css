@@ -208,6 +208,7 @@
 
 /* ===== SLIDER ENTRE REPORTAGE & THESE ===== */
 /* ===== SLIDER CONTAINER ===== */
+/* ===== SLIDER CONTAINER ===== */
 
 .feature-slider {
   position: relative;
@@ -216,7 +217,7 @@
   overflow: hidden;
 }
 
-/* chaque slide occupe la même zone, un seul visible */
+/* base state: all slides hidden, stacked */
 .feature-slide {
   position: absolute;
   inset: 0;
@@ -226,18 +227,28 @@
   pointer-events: none;
 }
 
+/* slide visible */
 .feature-slide.is-current {
   opacity: 1;
   transform: translateX(0);
   pointer-events: auto;
 }
 
-/* pour que le container ait une hauteur, on prend celle de la bannière */
+/* 🔐 fallback: si JS ne tourne pas, on montre quand même le 1er slide */
+.feature-slide:first-child {
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* hauteur des bannières (desktop) */
 .feature-slider .alumni-banner,
 .feature-slider .thesis-banner {
   height: 260px;
 }
 
+/* mobile: hauteur auto */
 @media (max-width: 900px) {
   .feature-slider .alumni-banner,
   .feature-slider .thesis-banner {
@@ -248,56 +259,3 @@
     margin-top: 18px;
   }
 }
-
-/* ===== BIG ARROWS ===== */
-
-.slider-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 999px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.45);
-  color: #ffffff;
-  font-size: 2rem;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-  z-index: 10;
-}
-
-.slider-arrow-left {
-  left: 10px;
-}
-
-.slider-arrow-right {
-  right: 10px;
-}
-
-/* survol desktop : flèches visibles */
-.feature-slider:hover .slider-arrow {
-  opacity: 1;
-}
-
-/* clic visuel */
-.slider-arrow:active {
-  transform: translateY(-50%) scale(0.95);
-  background: rgba(0,0,0,0.6);
-}
-
-/* mobile : pas de hover, on les laisse visibles */
-@media (max-width: 900px) {
-  .slider-arrow {
-    opacity: 0.9;
-  }
-
-  .feature-slider:hover .slider-arrow {
-    opacity: 0.9;
-  }
-}
-
