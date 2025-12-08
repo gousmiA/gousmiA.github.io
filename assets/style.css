@@ -92,6 +92,38 @@ body {
   color: var(--c3);
 }
 
+/* ===== Language toggle button ===== */
+
+.lang-btn {
+  margin-right: 14px;        /* space before the search icon */
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.0);
+  color: var(--c1);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* when navbar is scrolled (dark background) */
+.topbar.scrolled .lang-btn {
+  color: #ffffff;
+  background: transparent;
+  border-color: transparent;
+}
+
+.topbar.scrolled .lang-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* BACKGROUND STRIPES ------------------ */
 .bg-stripes {
   position: absolute;
