@@ -1,1 +1,171 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aimene Gouasmi – Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/banner.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="left-icons">
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/agouasmi/" target="_blank" class="icon">
+      <img src="../assets/icons/Linkedin.svg" alt="LinkedIn">
+    </a>
+
+    <!-- ResearchGate -->
+    <a href="https://www.researchgate.net/profile/Aimene-Gouasmi" target="_blank" class="icon">
+      <img src="../assets/icons/Researchgate.svg" alt="ResearchGate">
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/Aimene-Gouasmi" target="_blank" class="icon">
+      <img src="../assets/icons/Github.svg" alt="GitHub">
+    </a>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="cv.html">CV</a>
+    <a href="publications.html">Publications</a>
+    <a href="talks.html">Talks</a>
+    <a href="teaching.html">Teaching</a>
+  </nav>
+
+  <div class="right-search">
+
+    <!-- language switch -->
+    <button class="lang-btn" type="button" onclick="switchLang()">
+      FR
+    </button>
+
+    <!-- search button -->
+    <button class="search-btn" aria-label="Search on the site">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 
+                 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 
+                 4.23-1.57l.27.28v.79L19 20.5 
+                 20.5 19 15.5 14zm-6 0C8.01 14 
+                 6 11.99 6 9.5S8.01 5 10.5 5 
+                 15 7.01 15 9.5 12.99 14 
+                 10.5 14z"/>
+      </svg>
+    </button>
+  </div>
+
+</header>
+
+
+
+<!-- Background -->
+<div class="bg-stripes">
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+  <div class="bg3"></div>
+  <div class="bg4"></div>
+</div>
+
+<div id="page-search-panel" class="page-search-panel">
+  <input
+    id="page-search-input"
+    class="page-search-input"
+    type="search"
+    placeholder="Search on the site…"
+  />
+  <div id="search-results" class="search-results"></div>
+</div>
+
+
+<!-- Main Card -->
+<div class="main-card">
+  <div class="photo-box">
+    <img src="../Aimene.jpeg" alt="Aimene Gouasmi">
+  </div>
+
+  <h1>Aimene Gouasmi</h1>
+  <div class="subtitle">ATER at the University of Perpignan Via Domitia</div>
+
+  <p>
+    Numerical analysis • Finite element methods • Interface problems • 
+    Flux reconstruction • A posteriori error estimation • CutFEM.
+  </p>
+
+  <p>
+    I am currently an ATER at the University of Perpignan Via Domitia (UPVD). 
+    My research focuses on equilibrated flux reconstruction, a posteriori error estimates, 
+    and interface problems in finite element methods, with applications to adaptive mesh refinement.
+  </p>
+
+  <h2>Contact</h2>
+
+  <a class="contact-btn" href="mailto:your.email@domain.com">
+    ✉️ Contact me
+  </a>
+</div>
+
+
+<h2>Highlights</h2>
+
+
+<!-- Slider -->
+<div class="feature-slider">
+
+  <!-- SLIDE 1 : Alumni interview -->
+  <div class="feature-slide is-current">
+    <a class="alumni-banner" 
+      href="https://alumni.univ-pau.fr/fr/article/aimene-gouasmi-attache-temporaire-d-enseignement-et-de-recherche-ater-a-l-uppa-alumni-edene-cohort-1/09/09/2025/376"
+      target="_blank">
+
+      <div class="banner-left">
+        <h3>🎓 Interview – UPPA Alumni</h3>
+        <p>
+          An interview conducted by UPPA Alumni about my academic journey, research in numerical analysis,
+          and my role as an ATER within the EDENE program.
+        </p>
+        <span class="banner-link">Read the article →</span>
+      </div>
+
+      <div class="banner-right">
+        <!-- image placeholder -->
+      </div>
+    </a>
+  </div>
+
+
+  <!-- SLIDE 2 : PhD Thesis -->
+  <div class="feature-slide">
+    <a class="thesis-banner"
+      href="../these_aimene_gouasmi.pdf"
+      target="_blank">
+
+      <div class="thesis-left">
+        <h3>🎓 PhD Thesis – Conservative Flux Reconstruction</h3>
+        <p>
+          PhD in Applied Mathematics, UPPA – LMAP (2021–2024).  
+          A thesis dedicated to conservative flux reconstruction for interface problems 
+          and robust a posteriori error estimation.
+        </p>
+        <span class="thesis-link">Read the thesis →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ARROWS -->
+  <button class="slider-arrow slider-arrow-left" type="button">‹</button>
+  <button class="slider-arrow slider-arrow-right" type="button">›</button>
+</div>
+
+
+
+<script src="../assets/scripts/search2.js?v=4"></script>
+<script src="../assets/scripts/slider.js?v=4"></script>
+<script src="../assets/scripts/lang-switch.js?v=1"></script>
+
+</body>
+</html>
