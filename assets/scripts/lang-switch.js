@@ -1,39 +1,46 @@
 /* ============================================================
-   Language Switcher – Independent JS File
-   Switch between French page (page.html)
-   and its English version (page_en.html)
+   Language Switcher – FR <-> EN (folder: Page_en)
+   French pages:   /.../index.html, /.../cv.html, ...
+   English pages:  /.../Page_en/index.html, /.../Page_en/cv.html, ...
    ============================================================ */
 
 function switchLang() {
   const loc = window.location;
-  let path = loc.pathname;
+  let path = loc.pathname; // e.g. /gousmia.github.io/index.html or /gousmia.github.io/Page_en/index.html
 
-  // Extract file name (or assume index.html)
-  let file = path.split("/").pop();
-  if (!file || file === "") {
+  // split path into segments
+  let segments = path.split("/"); // ["", "gousmia.github.io", "index.html"]
+
+  // get file name
+  let file = segments.pop();
+  if (!file) {
+    // URL ended with a slash, assume index.html
     file = "index.html";
-    path = path + (path.endsWith("/") ? "" : "/") + file;
   }
 
-  let newFile;
+  const isEnglish = segments.includes("Page_en");
 
-  // Case 1 : english version → go back to french
-  if (file.endsWith("_en.html")) {
-    newFile = file.replace("_en.html", ".html");
+  let newSegments;
+
+  if (isEnglish) {
+    // We are in /.../Page_en/xxx  --> go back to /.../xxx
+    newSegments = segments.filter(seg => seg !== "Page_en");
+  } else {
+    // We are in FR  --> insert Page_en before the file
+    newSegments = segments.concat("Page_en");
   }
 
-  // Case 2 : french version → go to english version
-  else if (file.endsWith(".html")) {
-    newFile = file.replace(".html", "_en.html");
+  // rebuild base path
+  let base = newSegments.join("/");
+  if (!base.startsWith("/")) {
+    base = "/" + base;
+  }
+  if (!base.endsWith("/")) {
+    base += "/";
   }
 
-  // Fallback
-  else {
-    newFile = "index_en.html";
-  }
+  const newPath = base + file;
 
-  const newPath = path.replace(file, newFile);
-
-  // Redirect, keeping URL parameters + anchors (if any)
+  // keep query string and hash if any
   loc.href = newPath + loc.search + loc.hash;
 }
